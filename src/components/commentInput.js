@@ -20,10 +20,13 @@ class CommentInput extends Component {
     handleBlurName = (e) => {
         this.props.handleBlurName(e.target.value);
     }
+    componentDidMount() {
+        this.textarea.focus();
+    }
     render() {
         return (
-            <div>
-                <div>
+            <div className={"commentInput"}>
+                <div className={"name"}>
                     <label>name:</label>
                     <input
                         type="text"
@@ -31,17 +34,17 @@ class CommentInput extends Component {
                         onChange={this.handleChangeName}
                         onBlur={this.handleBlurName} />
                 </div>
-                <div>
+                <div className={"content"}>
                     <label>content:</label>
                     <textarea
+                        ref={(textarea) => this.textarea = textarea}
                         rows="3"
                         value={this.state.content}
                         onChange={this.handleChangeContent} />
                 </div>
-                <button
-                    onClick={this.props.onSubmit.bind(this,this.state.userName, this.state.content)}>
-                    submit
-                </button>
+                <div className={"button"}>
+                    <button onClick={this.props.onSubmit.bind(this, this.state.userName, this.state.content)}>submit</button>
+                </div>
             </div>
         )
     }

@@ -1,18 +1,20 @@
-import types from '../reducers/reducer.js'
-const reducer = (state = [], action) => {
+import types from '../types/types.js'
+const reducer = (state, action) => {
+    let comments = localStorage.getItem('comments');
+    comments = comments?JSON.parse(comments):[];
+    state={comments:[...comments]};
     switch (action.type) {
         case types.INIT_COMMENTS:
-            return this.init_comments(state, action);
+            return init_comments(state, action);
         case types.ADD_COMMENT:
-            return this.add_comment(state, action);
+            return add_comment(state, action);
         case types.DELETE_COMMENT:
-            return this.delete_comment(state, action);
+            return delete_comment(state, action);
         default:
             return state;
     }
 }
 const init_comments = (state, action) => {
-    let comments = state.comments;
     let newComments = localStorage.getItem('comments');
     state.comments = newComments;
     return state;
@@ -21,15 +23,14 @@ const add_comment = (state, action) => {
     let comment = action.value;
     let comments = state.comments.slice(0);
     comments.push(comment);
-    localStorage.setItem('comments', comments);
+    localStorage.setItem('comments', JSON.stringify(comments));
     state.comments = comments;
-    return state;
+    return {comments:[...comments]};
 }
 const delete_comment = (state, action) => {
     let index = action.value;
     let comments = [...state.comments.slice(0, index), ...state.comments.slice(index + 1)];
-    localStorage.setItem('comments', comments);
-    state.comments = comments;
-    return state;
+    localStorage.setItem('comments',  JSON.stringify(comments));
+    return {comments:[...comments]};
 }
 export default reducer;

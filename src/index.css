@@ -1,5 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #fbfbfb;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 10px auto;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+}
+
+.commentInput {
+  width: 400px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.commentInput div {
+  margin: 10px auto 10px auto;
+}
+
+.commentInput label {
+  display: block;
+  width: 100px;
+  float: left;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.commentInput .name input {
+  border-radius: 2px;
+  border: 1px solid #e6e6e6;
+  width: 300px;
+  height: 25px;
+  padding: 10px;
+}
+
+.commentInput .content textarea {
+  border-radius: 2px;
+  border: 1px solid #e6e6e6;
+  width: 300px;
+  height: 100px;
+  resize: none;
+  padding: 10px;
+}
+
+.commentInput .button {
+  text-align: right;
+  display: block;
+}
+
+.commentInput button {
+  background: #00a3cf;
+  border: none;
+  width: 80px;
+  height: 25px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+.commentList {
+  width: 400px;
+}
+
+.commentList .comment {
+  /* display: flex;
+  flex-flow: none; */
+}
+
+.comment .name {
+  display: inline-flex;
+  width: 100px;
+  text-align: right;
+  padding-right: 5px;
+  justify-content: flex-end;
+}
+
+.comment .content {
+  display: inline-block;
+  margin-left: 100px;
+  width: 250px;
+  height: 50px;
+}
+
+.comment .date {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment .delete {
+  position: relative;
+  right: 0px;
 }

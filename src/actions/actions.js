@@ -1,4 +1,4 @@
-import types from '../reducers/reducer.js'
+import types from '../types/types'
 const actions={
     initComments:()=>({
         type:types.INIT_COMMENTS
