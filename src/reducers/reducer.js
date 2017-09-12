@@ -1,36 +1,39 @@
-import types from '../types/types.js'
+import types from "../types/types.js";
 const reducer = (state, action) => {
-    let comments = localStorage.getItem('comments');
-    comments = comments?JSON.parse(comments):[];
-    state={comments:[...comments]};
-    switch (action.type) {
-        case types.INIT_COMMENTS:
-            return init_comments(state, action);
-        case types.ADD_COMMENT:
-            return add_comment(state, action);
-        case types.DELETE_COMMENT:
-            return delete_comment(state, action);
-        default:
-            return state;
-    }
-}
+  let comments = localStorage.getItem("comments");
+  comments = comments ? JSON.parse(comments) : [];
+  state = { comments: [...comments] };
+  switch (action.type) {
+    case types.INIT_COMMENTS:
+      return init_comments(state, action);
+    case types.ADD_COMMENT:
+      return add_comment(state, action);
+    case types.DELETE_COMMENT:
+      return delete_comment(state, action);
+    default:
+      return state;
+  }
+};
 const init_comments = (state, action) => {
-    let newComments = localStorage.getItem('comments');
-    state.comments = newComments;
-    return state;
-}
+  let newComments = localStorage.getItem("comments");
+  state.comments = newComments;
+  return state;
+};
 const add_comment = (state, action) => {
-    let comment = action.value;
-    let comments = state.comments.slice(0);
-    comments.push(comment);
-    localStorage.setItem('comments', JSON.stringify(comments));
-    state.comments = comments;
-    return {comments:[...comments]};
-}
+  let comment = action.value;
+  let comments = state.comments.slice(0);
+  comments.push(comment);
+  localStorage.setItem("comments", JSON.stringify(comments));
+  state.comments = comments;
+  return { comments: [...comments] };
+};
 const delete_comment = (state, action) => {
-    let index = action.value;
-    let comments = [...state.comments.slice(0, index), ...state.comments.slice(index + 1)];
-    localStorage.setItem('comments',  JSON.stringify(comments));
-    return {comments:[...comments]};
-}
+  let index = action.value;
+  let comments = [
+    ...state.comments.slice(0, index),
+    ...state.comments.slice(index + 1)
+  ];
+  localStorage.setItem("comments", JSON.stringify(comments));
+  return { comments: [...comments] };
+};
 export default reducer;

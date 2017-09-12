@@ -73,8 +73,7 @@ body {
 }
 
 .commentList .comment {
-  /* display: flex;
-  flex-flow: none; */
+  position: relative;
 }
 
 .comment .name {
@@ -89,7 +88,7 @@ body {
   display: inline-block;
   margin-left: 100px;
   width: 250px;
-  height: 50px;
+  height: 20px;
 }
 
 .comment .date {
@@ -98,6 +97,21 @@ body {
 }
 
 .comment .delete {
-  position: relative;
-  right: 0px;
+  display: block;
+  float: right;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  opacity: 0;
+  background: #00a3cf;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  height: 20px;
+}
+.comment:hover .delete {
+  opacity: 1;
 }
