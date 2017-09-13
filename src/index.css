@@ -112,6 +112,7 @@ body {
   outline: none;
   height: 20px;
 }
+
 .comment:hover .delete {
   opacity: 1;
 }

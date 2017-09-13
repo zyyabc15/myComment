@@ -4,8 +4,6 @@ const reducer = (state, action) => {
   comments = comments ? JSON.parse(comments) : [];
   state = { comments: [...comments] };
   switch (action.type) {
-    case types.INIT_COMMENTS:
-      return init_comments(state, action);
     case types.ADD_COMMENT:
       return add_comment(state, action);
     case types.DELETE_COMMENT:
@@ -14,11 +12,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
-const init_comments = (state, action) => {
-  let newComments = localStorage.getItem("comments");
-  state.comments = newComments;
-  return state;
-};
+
 const add_comment = (state, action) => {
   let comment = action.value;
   let comments = state.comments.slice(0);

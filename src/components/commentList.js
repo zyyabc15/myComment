@@ -10,6 +10,7 @@ class CommentList extends Component {
           return (
             <Comment
               key={key}
+              index={key}
               comment={comment}
               delComment={this.props.delComment}
             />
@@ -24,8 +25,7 @@ let mapStateToProps = state => {
     comments: state.comments
   };
 };
-let mapDipatchToProps = dispatch => {
-  console.log(actions.deleteComment);
+let mapDispatchToProps = dispatch => {
   return {
     delComment: index => {
       dispatch(actions.deleteComment(index));
@@ -33,5 +33,5 @@ let mapDipatchToProps = dispatch => {
   };
 };
 
-connect(mapStateToProps, mapDipatchToProps)(CommentList);
-export default CommentList;
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);

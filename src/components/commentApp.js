@@ -27,7 +27,8 @@ class CommentApp extends Component {
     this._addUserName(userName);
   };
   handleSubmit = (userName, content) => {
-    this.props.handleSubmit({ userName, content });
+    let date = +new Date();
+    this.props.handleSubmit({ userName, content, date });
   };
   render() {
     return (
@@ -47,11 +48,11 @@ let mapStateToProps = state => {
     comments: state.comments
   };
 };
-let mapDipatchToProps = dispatch => {
+let mapDispatchToProps = dispatch => {
   return {
     handleSubmit: comment => {
       dispatch(actions.addComment(comment));
     }
   };
 };
-export default connect(mapStateToProps, mapDipatchToProps)(CommentApp);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentApp);
